@@ -107,6 +107,9 @@ public class MainActivity extends AppCompatActivity
         txt.setText("Work!!!");
 
         Intent intent = new Intent(this, SecondActiviti.class);
+
+        intent.putExtra("txt_val", "Work!!!");
+
         startActivity(intent);
     }
 }

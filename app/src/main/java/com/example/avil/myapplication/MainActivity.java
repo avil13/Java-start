@@ -1,6 +1,8 @@
 package com.example.avil.myapplication;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -121,4 +124,24 @@ public class MainActivity extends AppCompatActivity
         toast.setGravity(Gravity.CENTER, 0, 0);
         toast.show();
     }
+
+    private void  alert(String txt){
+        Toast toast = Toast.makeText(getApplicationContext(), txt, Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.show();
+    }
+
+    public void onPosition(View v){
+        Context context = getApplicationContext();
+        Configuration configuration = getResources().getConfiguration();
+
+        if (configuration.orientation == Configuration.ORIENTATION_PORTRAIT){
+            this.alert("Портретная");
+        }else if (configuration.orientation == Configuration.ORIENTATION_LANDSCAPE){
+            this.alert("Альбомная");
+        }
+    }
+
+
+
 }

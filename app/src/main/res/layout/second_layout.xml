@@ -11,6 +11,13 @@
         android:onClick="goToMain"
         android:text="To main activiti" />
 
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClickActivMain"
+        android:text="to main whith active" />
+
     <TextView
         android:id="@+id/text2"
         android:layout_width="match_parent"

@@ -28,4 +28,12 @@ public class SecondActiviti extends Activity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+
+    public void onClickActivMain(View v ){
+        Intent intent = new Intent();
+        intent.putExtra("text", "Ok man!");
+        setResult(RESULT_OK, intent);
+        finish();
+    }
+
 }

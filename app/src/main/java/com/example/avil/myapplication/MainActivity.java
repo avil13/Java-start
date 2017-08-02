@@ -22,10 +22,18 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+
+    final static int MAIN_TO_VAR = 200;
+
+    TextView txt;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        txt = (TextView) findViewById(R.id.txt_block);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -108,7 +116,6 @@ public class MainActivity extends AppCompatActivity
 
 
     public void onClickButton(View v) {
-        TextView txt = (TextView) findViewById(R.id.txt_block);
         txt.setText("Work!!!");
 
         Intent intent = new Intent(this, SecondActiviti.class);
@@ -119,29 +126,50 @@ public class MainActivity extends AppCompatActivity
     }
 
 
+    public void onClickResult(View v) {
+        Intent intent = new Intent(this, SecondActiviti.class);
+        intent.putExtra("txt_val", "Get me parameters, man!!!");
+        startActivityForResult(intent, MAIN_TO_VAR);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK) {
+            switch (requestCode) {
+                case MAIN_TO_VAR:
+                    String t = (String) data.getStringExtra("text");
+                    txt.setText(t);
+            }
+        } else {
+            alert("Error!!! " + requestCode + " " + RESULT_OK + "  " + resultCode);
+        }
+    }
+
+
     public void alertToast(View v) {
         Toast toast = Toast.makeText(getApplicationContext(), "Hello world", Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.CENTER, 0, 0);
         toast.show();
     }
 
-    private void  alert(String txt){
+    private void alert(String txt) {
         Toast toast = Toast.makeText(getApplicationContext(), txt, Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.CENTER, 0, 0);
         toast.show();
     }
 
-    public void onPosition(View v){
+    public void onPosition(View v) {
         Context context = getApplicationContext();
         Configuration configuration = getResources().getConfiguration();
 
-        if (configuration.orientation == Configuration.ORIENTATION_PORTRAIT){
+        if (configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
             this.alert("Портретная");
-        }else if (configuration.orientation == Configuration.ORIENTATION_LANDSCAPE){
+        } else if (configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
             this.alert("Альбомная");
         }
     }
-
 
 
 }

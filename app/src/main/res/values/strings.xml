@@ -5,4 +5,8 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <string name="title_activity_three">ThreeActivity</string>
+    <string name="implicity_call">Неявный вызов</string>
+    <string name="explict_call">Явный вызов</string>
+    <string name="call_component">Вызов компонента</string>
 </resources>

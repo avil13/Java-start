@@ -6,6 +6,7 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -169,6 +170,13 @@ public class MainActivity extends AppCompatActivity
         } else if (configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
             this.alert("Альбомная");
         }
+    }
+
+
+    public void onImpictCall(View v) {
+        Log.w("LOG_DEV", "--> go");
+        Intent intent = new Intent("com.example.avil.myapplication.ThreeActivity");
+        startActivity(intent);
     }
 
 
